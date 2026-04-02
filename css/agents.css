@@ -1,0 +1,323 @@
+/* ============================================
+   AI AGENTS SECTION
+   ============================================ */
+
+.agents {
+  background: var(--bg-secondary);
+  position: relative;
+  overflow: hidden;
+}
+
+.agents::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0,240,255,0.3), transparent);
+}
+
+.agents-intro {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto var(--space-3xl);
+  color: var(--text-muted);
+  font-size: var(--fs-md);
+}
+
+/* Terminal UI */
+.terminal-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.terminal {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(8, 8, 18, 0.95);
+  box-shadow: var(--shadow-lg), 0 0 60px rgba(0, 0, 0, 0.5);
+}
+
+.terminal-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-md) var(--space-lg);
+  background: rgba(20, 20, 35, 0.8);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.terminal-dots {
+  display: flex;
+  gap: 6px;
+}
+
+.terminal-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.terminal-dot.red { background: #ff5f57; }
+.terminal-dot.yellow { background: #ffbd2e; }
+.terminal-dot.green { background: #28c840; }
+
+.terminal-title {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+  flex: 1;
+  text-align: center;
+}
+
+.terminal-body {
+  padding: var(--space-xl);
+  min-height: 400px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.8;
+  position: relative;
+}
+
+/* Terminal output lines */
+.terminal-line {
+  margin-bottom: 2px;
+  opacity: 0;
+  transform: translateY(5px);
+  animation: terminalReveal 0.3s ease forwards;
+}
+
+@keyframes terminalReveal {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.terminal-line .prompt {
+  color: var(--accent-cyan);
+}
+
+.terminal-line .command {
+  color: var(--text-primary);
+}
+
+.terminal-line .comment {
+  color: var(--text-muted);
+}
+
+.terminal-line .success {
+  color: var(--status-ok);
+}
+
+.terminal-line .warning {
+  color: var(--status-warn);
+}
+
+.terminal-line .error {
+  color: var(--status-error);
+}
+
+.terminal-line .info {
+  color: var(--accent-blue);
+}
+
+/* Agent scan results table */
+.scan-results {
+  margin: var(--space-lg) 0;
+  width: 100%;
+  overflow-x: auto;
+}
+
+.scan-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+
+.scan-table th {
+  text-align: left;
+  color: var(--text-muted);
+  font-weight: 500;
+  padding: var(--space-sm) var(--space-md);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 10px;
+  white-space: nowrap;
+}
+
+.scan-table td {
+  padding: var(--space-sm) var(--space-md);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.scan-table .status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 10px;
+  border-radius: var(--radius-sm);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.status-badge.ok {
+  background: rgba(0, 255, 136, 0.1);
+  color: var(--status-ok);
+  border: 1px solid rgba(0, 255, 136, 0.2);
+}
+
+.status-badge.warn {
+  background: rgba(255, 170, 0, 0.1);
+  color: var(--status-warn);
+  border: 1px solid rgba(255, 170, 0, 0.2);
+}
+
+.status-badge.error {
+  background: rgba(255, 51, 102, 0.1);
+  color: var(--status-error);
+  border: 1px solid rgba(255, 51, 102, 0.2);
+}
+
+/* Before/After fix comparison */
+.fix-comparison {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+  margin: var(--space-lg) 0;
+}
+
+.fix-panel {
+  padding: var(--space-md);
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.fix-panel.before {
+  background: rgba(255, 51, 102, 0.05);
+  border-color: rgba(255, 51, 102, 0.15);
+}
+
+.fix-panel.after {
+  background: rgba(0, 255, 136, 0.05);
+  border-color: rgba(0, 255, 136, 0.15);
+}
+
+.fix-panel-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: var(--space-sm);
+  padding-bottom: var(--space-sm);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.fix-panel.before .fix-panel-label { color: var(--status-error); }
+.fix-panel.after .fix-panel-label { color: var(--status-ok); }
+
+.fix-panel-code {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.8;
+}
+
+.fix-panel-code .deleted {
+  color: var(--status-error);
+  text-decoration: line-through;
+  opacity: 0.7;
+}
+
+.fix-panel-code .added {
+  color: var(--status-ok);
+}
+
+/* Cursor blink */
+.cursor {
+  display: inline-block;
+  width: 8px;
+  height: 16px;
+  background: var(--accent-cyan);
+  animation: blink 1s step-end infinite;
+  vertical-align: middle;
+  margin-left: 2px;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Run Test Button */
+.agent-controls {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-lg);
+  margin-top: var(--space-2xl);
+}
+
+.btn-agent {
+  padding: 14px 36px;
+  border-radius: var(--radius-xl);
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-agent.run-test {
+  background: rgba(0, 240, 255, 0.1);
+  color: var(--accent-cyan);
+  border: 1px solid rgba(0, 240, 255, 0.3);
+}
+
+.btn-agent.run-test:hover {
+  background: rgba(0, 240, 255, 0.2);
+  box-shadow: 0 0 30px rgba(0, 240, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.btn-agent.auto-fix {
+  background: rgba(0, 255, 136, 0.1);
+  color: var(--status-ok);
+  border: 1px solid rgba(0, 255, 136, 0.3);
+}
+
+.btn-agent.auto-fix:hover {
+  background: rgba(0, 255, 136, 0.2);
+  box-shadow: 0 0 30px rgba(0, 255, 136, 0.2);
+  transform: translateY(-2px);
+}
+
+.btn-agent:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+/* Progress bar */
+.scan-progress {
+  width: 100%;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 2px;
+  margin: var(--space-md) 0;
+  overflow: hidden;
+}
+
+.scan-progress-bar {
+  height: 100%;
+  background: var(--gradient-primary);
+  border-radius: 2px;
+  width: 0%;
+  transition: width 0.3s ease;
+}

@@ -1,0 +1,265 @@
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+/* ---- Tablets (max 1024px) ---- */
+@media (max-width: 1024px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-2xl);
+  }
+
+  .about-text {
+    padding-right: 0;
+  }
+
+  .about-stats {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-2xl);
+  }
+
+  .fix-comparison {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---- Large phones / Small tablets (max 768px) ---- */
+@media (max-width: 768px) {
+  /* Nav */
+  .nav-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 280px;
+    height: 100vh;
+    background: rgba(10, 10, 15, 0.98);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    flex-direction: column;
+    justify-content: center;
+    padding: var(--space-3xl);
+    transition: right var(--transition-base);
+    border-left: 1px solid rgba(0, 240, 255, 0.1);
+    z-index: 100;
+  }
+
+  .nav-menu.open {
+    right: 0;
+  }
+
+  .nav-toggle {
+    display: flex;
+  }
+
+  .nav-link {
+    font-size: var(--fs-md);
+    padding: var(--space-md) 0;
+  }
+
+  .nav-cta {
+    margin-top: var(--space-lg);
+    text-align: center;
+    display: block;
+  }
+
+  /* Hero */
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-buttons .btn {
+    width: 100%;
+    max-width: 280px;
+    justify-content: center;
+  }
+
+  .scroll-indicator {
+    display: none;
+  }
+
+  /* About */
+  .about-stats {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .about-highlights {
+    grid-template-columns: 1fr;
+  }
+
+  /* Skills */
+  .skills-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-md);
+  }
+
+  .skill-card {
+    padding: var(--space-lg);
+  }
+
+  /* Portfolio */
+  .funnel-wrapper {
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .funnel-arrow {
+    transform: rotate(90deg);
+  }
+
+  .funnel-step {
+    width: 100%;
+    min-width: auto;
+  }
+
+  .funnel-step-bar {
+    height: 50px;
+  }
+
+  /* Services */
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Agents */
+  .terminal-body {
+    padding: var(--space-md);
+    font-size: 11px;
+    min-height: 300px;
+    overflow-x: auto;
+  }
+
+  .scan-table {
+    font-size: 10px;
+  }
+
+  .scan-table th,
+  .scan-table td {
+    padding: var(--space-xs) var(--space-sm);
+  }
+
+  /* Contact */
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  /* Footer */
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+/* ---- Small phones (max 480px) ---- */
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: clamp(1.8rem, 1.2rem + 3vw, 2.5rem);
+  }
+
+  .hero-subtitle {
+    font-size: var(--fs-base);
+  }
+
+  .hero-badge {
+    font-size: 10px;
+    padding: 6px 14px;
+  }
+
+  .section-header {
+    margin-bottom: var(--space-2xl);
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-stats {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-md);
+  }
+
+  .stat-card {
+    padding: var(--space-lg);
+  }
+
+  .agent-controls {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .btn-agent {
+    width: 100%;
+    max-width: 280px;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .contact-form-wrapper {
+    padding: var(--space-lg);
+  }
+}
+
+/* ---- Desktop+ (min 1441px) ---- */
+@media (min-width: 1441px) {
+  :root {
+    --max-width: 1300px;
+  }
+}
+
+/* ---- Reduce motion for accessibility ---- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  .hero-glow {
+    animation: none;
+  }
+
+  .scroll-indicator {
+    animation: none;
+  }
+}
+
+/* ---- Print ---- */
+@media print {
+  .navbar,
+  .scroll-indicator,
+  #three-canvas,
+  .hero-glow,
+  #preloader {
+    display: none !important;
+  }
+
+  body {
+    background: white;
+    color: black;
+  }
+
+  .glass-card {
+    border: 1px solid #ddd;
+    background: white;
+  }
+}

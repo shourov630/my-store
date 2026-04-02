@@ -1,0 +1,90 @@
+/* ============================================
+   DESIGN TOKENS — MD SHOUROV Portfolio
+   ============================================ */
+
+:root {
+  /* ---- Colors ---- */
+  --bg-primary: #0a0a0f;
+  --bg-secondary: #0d0d16;
+  --bg-tertiary: #12121f;
+  --surface: rgba(15, 15, 25, 0.7);
+  --surface-hover: rgba(20, 20, 35, 0.85);
+  --surface-border: rgba(0, 240, 255, 0.1);
+
+  --accent-cyan: #00f0ff;
+  --accent-purple: #7c3aed;
+  --accent-blue: #3b82f6;
+  --accent-pink: #ec4899;
+  --gradient-primary: linear-gradient(135deg, #00f0ff 0%, #7c3aed 100%);
+  --gradient-hero: linear-gradient(135deg, #00f0ff 0%, #7c3aed 50%, #ec4899 100%);
+  --gradient-text: linear-gradient(90deg, #00f0ff, #7c3aed);
+
+  --status-ok: #00ff88;
+  --status-warn: #ffaa00;
+  --status-error: #ff3366;
+
+  --text-primary: #ffffff;
+  --text-secondary: #b0b0c8;
+  --text-muted: #6b6b8d;
+
+  /* ---- Typography ---- */
+  --font-heading: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --fs-xs: clamp(0.7rem, 0.65rem + 0.25vw, 0.8rem);
+  --fs-sm: clamp(0.8rem, 0.75rem + 0.3vw, 0.9rem);
+  --fs-base: clamp(0.9rem, 0.85rem + 0.35vw, 1rem);
+  --fs-md: clamp(1rem, 0.9rem + 0.5vw, 1.15rem);
+  --fs-lg: clamp(1.15rem, 1rem + 0.8vw, 1.5rem);
+  --fs-xl: clamp(1.5rem, 1.2rem + 1.5vw, 2.2rem);
+  --fs-2xl: clamp(2rem, 1.5rem + 2.5vw, 3.2rem);
+  --fs-3xl: clamp(2.5rem, 1.8rem + 3.5vw, 4.5rem);
+
+  /* ---- Spacing ---- */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+  --space-4xl: 6rem;
+  --space-section: clamp(4rem, 3rem + 5vw, 8rem);
+
+  /* ---- Layout ---- */
+  --max-width: 1200px;
+  --container-padding: clamp(1rem, 2vw, 2rem);
+
+  /* ---- Borders & Radius ---- */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-full: 50%;
+
+  /* ---- Effects ---- */
+  --glass-bg: rgba(15, 15, 30, 0.6);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-blur: blur(20px);
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.5);
+  --shadow-glow-cyan: 0 0 30px rgba(0, 240, 255, 0.2);
+  --shadow-glow-purple: 0 0 30px rgba(124, 58, 237, 0.2);
+  --shadow-glow-combined: 0 0 20px rgba(0, 240, 255, 0.15), 0 0 40px rgba(124, 58, 237, 0.1);
+
+  /* ---- Transitions ---- */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --transition-fast: 200ms var(--ease-out);
+  --transition-base: 350ms var(--ease-out);
+  --transition-slow: 600ms var(--ease-out);
+
+  /* ---- Z-index ---- */
+  --z-canvas: -1;
+  --z-content: 1;
+  --z-nav: 100;
+  --z-modal: 200;
+}
