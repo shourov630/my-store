@@ -100,14 +100,14 @@ params: { item_id, item_name, value, item_category }`}]),await o(500),s('<span c
           <!-- Screen/Face -->
           <rect x="18" y="26" width="28" height="18" rx="6" fill="#0a0a14" stroke="rgba(0,240,255,0.2)" stroke-width="1"/>
           <!-- Left eye -->
-          <g class="pet-eye" transform-origin="27 34">
+          <g class="pet-eye" style="transform-origin: 27px 34px;">
             <circle cx="27" cy="34" r="3.5" fill="#00f0ff">
               <animate attributeName="opacity" values="1;0.7;1" dur="3s" repeatCount="indefinite"/>
             </circle>
             <circle cx="27" cy="34" r="1.5" fill="#fff" opacity="0.8"/>
           </g>
           <!-- Right eye -->
-          <g class="pet-eye" transform-origin="37 34">
+          <g class="pet-eye" style="transform-origin: 37px 34px;">
             <circle cx="37" cy="34" r="3.5" fill="#7c3aed">
               <animate attributeName="opacity" values="1;0.7;1" dur="3s" repeatCount="indefinite" begin="0.5s"/>
             </circle>
