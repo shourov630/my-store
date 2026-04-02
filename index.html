@@ -52,18 +52,29 @@
   </script>
 
   <!-- Styles -->
-  <link rel="stylesheet" href="/css/variables.css">
-  <link rel="stylesheet" href="/css/base.css">
-  <link rel="stylesheet" href="/css/navigation.css">
-  <link rel="stylesheet" href="/css/hero.css">
-  <link rel="stylesheet" href="/css/about.css">
-  <link rel="stylesheet" href="/css/skills.css">
-  <link rel="stylesheet" href="/css/portfolio.css">
-  <link rel="stylesheet" href="/css/services.css">
-  <link rel="stylesheet" href="/css/agents.css">
-  <link rel="stylesheet" href="/css/contact.css">
-  <link rel="stylesheet" href="/css/pet.css">
-  <link rel="stylesheet" href="/css/responsive.css">
+  <link rel="stylesheet" href="./css/variables.css">
+  <link rel="stylesheet" href="./css/base.css">
+  <link rel="stylesheet" href="./css/navigation.css">
+  <link rel="stylesheet" href="./css/hero.css">
+  <link rel="stylesheet" href="./css/about.css">
+  <link rel="stylesheet" href="./css/skills.css">
+  <link rel="stylesheet" href="./css/portfolio.css">
+  <link rel="stylesheet" href="./css/services.css">
+  <link rel="stylesheet" href="./css/agents.css">
+  <link rel="stylesheet" href="./css/contact.css">
+  <link rel="stylesheet" href="./css/pet.css">
+  <link rel="stylesheet" href="./css/responsive.css">
+
+  <!-- Import Map for Dependencies -->
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://esm.sh/three@0.160.0",
+      "gsap": "https://esm.sh/gsap@3.12.5",
+      "gsap/ScrollTrigger": "https://esm.sh/gsap@3.12.5/ScrollTrigger"
+    }
+  }
+  </script>
 </head>
 
 <body>
@@ -417,22 +428,22 @@
           <h3 class="gallery-title">Implemented Verification</h3>
           <div class="gallery-grid">
             <div class="gallery-item glass-card">
-              <img src="/assets/proof-1.png" alt="GTM Tags Screenshot" class="proof-img" loading="lazy"
+              <img src="./assets/proof-1.png" alt="GTM Tags Screenshot" class="proof-img" loading="lazy"
                 onerror="this.onerror=null; this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 200%22><rect width=%22400%22 height=%22200%22 fill=%22%2316213e%22/><text x=%2250%25%22 y=%2250%25%22 fill=%22%2300f0ff%22 font-family=%22monospace%22 font-size=%2214%22 text-anchor=%22middle%22 dominant-baseline=%22middle%22>GTM Tags Setup (Pending Image)</text></svg>';">
               <div class="gallery-caption">GTM Tags Setup</div>
             </div>
             <div class="gallery-item glass-card">
-              <img src="/assets/proof-2.png" alt="GTM Variables" class="proof-img" loading="lazy"
+              <img src="./assets/proof-2.png" alt="GTM Variables" class="proof-img" loading="lazy"
                 onerror="this.onerror=null; this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 200%22><rect width=%22400%22 height=%22200%22 fill=%22%2316213e%22/><text x=%2250%25%22 y=%2250%25%22 fill=%22%2300f0ff%22 font-family=%22monospace%22 font-size=%2214%22 text-anchor=%22middle%22 dominant-baseline=%22middle%22>Data Layer Variables (Pending Image)</text></svg>';">
               <div class="gallery-caption">Data Layer Variables</div>
             </div>
             <div class="gallery-item glass-card">
-              <img src="/assets/proof-3.png" alt="Workspace Overview" class="proof-img" loading="lazy"
+              <img src="./assets/proof-3.png" alt="Workspace Overview" class="proof-img" loading="lazy"
                 onerror="this.onerror=null; this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 200%22><rect width=%22400%22 height=%22200%22 fill=%22%2316213e%22/><text x=%2250%25%22 y=%2250%25%22 fill=%22%2300f0ff%22 font-family=%22monospace%22 font-size=%2214%22 text-anchor=%22middle%22 dominant-baseline=%22middle%22>Container Status (Pending Image)</text></svg>';">
               <div class="gallery-caption">Container Installation</div>
             </div>
             <div class="gallery-item glass-card">
-              <img src="/assets/proof-4.png" alt="GA4 Debug View Event Log" class="proof-img" loading="lazy"
+              <img src="./assets/proof-4.png" alt="GA4 Debug View Event Log" class="proof-img" loading="lazy"
                 onerror="this.onerror=null; this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 200%22><rect width=%22400%22 height=%22200%22 fill=%22%2316213e%22/><text x=%2250%25%22 y=%2250%25%22 fill=%22%2300f0ff%22 font-family=%22monospace%22 font-size=%2214%22 text-anchor=%22middle%22 dominant-baseline=%22middle%22>Live Event Testing (Pending Image)</text></svg>';">
               <div class="gallery-caption">Live Event Testing (GA4)</div>
             </div>
@@ -848,8 +859,29 @@
     </div>
   </footer>
 
-  <!-- Scripts -->
-  <script type="module" src="/js/main.js"></script>
+  <script>
+    // Preloader removal fallback (ensures the website shows up even if JS modules fail to load entirely)
+    window.addEventListener('load', () => {
+      // Wait long enough for normal JS to execute (if it's working)
+      setTimeout(() => {
+        const preloader = document.getElementById('preloader');
+        // If preloader still exists and doesn't have 'loaded' class, modules failed!
+        if (preloader && !preloader.classList.contains('loaded')) {
+          preloader.classList.add('loaded');
+          setTimeout(() => {
+            if (preloader.parentNode) preloader.remove();
+          }, 600);
+          
+          // GSAP animations won't run if modules fail, so we must manually reveal the content
+          document.querySelectorAll('.reveal').forEach(el => {
+            el.style.opacity = '1';
+            el.style.transform = 'none';
+          });
+        }
+      }, 2000); // 2 second fallback timer
+    });
+  </script>
+  <script type="module" src="./js/main.js"></script>
 </body>
 
 </html>
